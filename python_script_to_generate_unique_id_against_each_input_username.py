@@ -39,4 +39,10 @@ def generate_unique_id(length):
 			num_list += id_obj.choice(num)
 		uid = "".join( id_obj.sample( alpha_list+num_list , length ) )
 		return(uid)
-	
+
+def show_current_time():
+	cur_time = datetime.datetime.now()
+	print("Date(dd/mm/yyyy) : ",cur_time.strftime("%d / %m / %y"))
+	print("Time(24 hour format) : ",cur_time.strftime("%H : %M : %S"))
+
+
