@@ -22,11 +22,11 @@ def generate_unique_id(length):
 	alpha = "qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM"
 	id_obj = random.SystemRandom()
 	if(length<6):
-		if(length==0)
+		if(length==0):
 			length+=1
 		uid = "".join(id_obj.sample(alpha,length))
 		return(uid)
-	else
+	else:
 		#length will be divided into two parts randomly and securely : one will be the Number Of Alphabets(NOA), and other will be Number Of Integers(NOI) in the unique id.
 		NOA = id_obj.choice( range( length//2 , length-1 ) )
 		NOI = length - NOA
@@ -45,4 +45,25 @@ def show_current_time():
 	print("Date(dd/mm/yyyy) : ",cur_time.strftime("%d / %m / %y"))
 	print("Time(24 hour format) : ",cur_time.strftime("%H : %M : %S"))
 
+"""
+Main Driver Code of the script.
+"""
 
+try:
+	id_size = int(input("Enter the length(number of characters) of the unique ids to be generated for each user: "))
+except ValueError:
+	print("Invalid type of input being entered.\nDefault length of id has been chosen as 16 characters.")
+while(1):
+	print()
+	choice = input("Enter your choice :\n1. Get Unique Id for user \n2. Exit \n\n->  ")[0]
+	if(choice=='1'):
+		username = input("Enter the username(avoid using spaces):  ")
+		username = username.replace(' ','_')
+		print("\n\nUsername: ",username)
+		print("Unique id for user : ",generate_unique_id(id_size))
+		show_current_time()
+		input("\n\nPress Enter to continue...")
+	elif(choice=='2'):
+		break
+	else:
+		input("\n\nInvalid choice. Press Enter to continue...")
